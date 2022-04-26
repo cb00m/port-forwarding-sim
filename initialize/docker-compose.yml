@@ -1,0 +1,56 @@
+version: "2"
+
+#all machines are connected to the docker 0 network
+services:
+
+    server:
+        image: crypto/server
+        container_name: server
+        restart: on-failure
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        networks:
+            back_net:
+                ipv4_address: 172.106.0.2
+            front_net:
+                ipv4_address: 198.62.0.3
+
+        ports: 
+            - "80:80"
+
+    database:
+        image: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        container_name: database
+        restart: on-failure
+
+        networks:
+            back_net:
+                ipv4_address: 172.106.0.3
+        
+        ports: 
+            - "3306:3306"
+    sniffer:
+        image: crypto/sniffer
+        container_name: sniffer
+        restart: on-failure
+        stdin_open: true # docker run -i
+        tty: true        # docker run -t
+        networks:
+            default:
+            front_net:
+                ipv4_address: 198.62.0.2
+
+
+networks:
+    back_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.106.0.0/16
+    front_net:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 198.62.0.0/16
