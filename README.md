@@ -20,13 +20,13 @@ When sniffer gets access to the server machine, it could then access the databas
 
 The following commands must be run:
 
-```cd initialize```
-```chmod +x prepare.sh && ./prepare.sh```
+```cd initialize```\n
+```chmod +x prepare.sh && ./prepare.sh```\n
 ```chmod +x build.sh && ./build.sh```
 
 ## Entering machines
 
 The following commands must be run:
 
-```cd enterMachines```
+```cd enterMachines```\n
 ```chmod +x enterSniffer.sh && ./enterSniffer.sh```
