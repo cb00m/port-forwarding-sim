@@ -3,19 +3,6 @@ version: "2"
 #all machines are connected to the docker 0 network
 services:
 
-    server:
-        image: nginx
-        container_name: server
-        expose:
-            - "80/tcp"
-        ports:
-            - "8000:80"
-        volumes:
-            - ../webpage/src:/usr/share/nginx/html:ro
-        restart: on-failure
-        environment:
-            - NGINX_PORT=80
-
     database:
         image: mysql:8.0.21
         container_name: database
@@ -35,6 +22,21 @@ services:
           - backend_network
         cap_add:
           - SYS_NICE  # CAP_SYS_NICE
+
+
+    server:
+        image: nginx
+        container_name: server
+        expose:
+            - "80/tcp"
+        ports:
+            - "8000:80"
+        volumes:
+            - ../frontend/src:/usr/share/nginx/html:ro
+        restart: on-failure
+        environment:
+            - NGINX_PORT=80
+
 
     backend:
         build: ../backend-service/
