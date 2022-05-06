@@ -1,1 +1,2 @@
-initialize/volumes
+*/node_modules
+volumes/*

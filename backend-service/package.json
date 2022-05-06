@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "port forwarding related vulnerabilities simulation",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "node ./index.js",
     "test": "test"
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/cb00m/port-forwarding-sim#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3"
   }
 }
