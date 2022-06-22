@@ -20,5 +20,4 @@ When sniffer gets access to the server machine, it could then access the databas
 
 The following commands must be run:
 
-```cd initialize```
-```chmod +x build.sh && ./build.sh```
+```sudo docker-compose up -build```
